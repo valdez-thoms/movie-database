@@ -62,11 +62,14 @@ $('#saveNewMovie').click(function () {
         body: JSON.stringify(newMovie)
     };
     fetch(glitchUrl, post)
-        .then(response => {
-            response.json()
-                .then(movieList => {
-                    $(".load-movies").html("");
-                    displayMovies(movieList)
-                })
+        .then(response => { console.log(response)
+            fetch(glitchUrl, get)
+            .then(response => {
+                response.json()
+                    .then(movieList => {
+                        $(".load-movies").html("");
+                        displayMovies(movieList)
+                    })
+            })
         })
 });
