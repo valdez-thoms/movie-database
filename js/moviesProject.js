@@ -1,17 +1,17 @@
 // parameters neccessary for fetch stored in variables glitchURL and movies
 let glitchUrl = "https://zenith-mature-adapter.glitch.me/movies";
-// let movies = "/db.json"
-let options = {
+
+// get for fetch
+let get = {
         method: 'GET',
         headers: {
             "Content-Type": "application/json"
         },
-        // body: JSON.stringify(movies)
-    }
-;
+    };
+
 
 // initial fetch on page load
-fetch(glitchUrl, options)
+fetch(glitchUrl, get)
     .then(response => {
         response.json()
             .then(movieList => {
@@ -31,19 +31,42 @@ function displayMovies(movieList) {
             html += "<h6 class='card-subtitle'><ul>";
             html += "<li class='list-unstyled'>" + movie.rating + "</li>"
             html += "<li class='list-unstyled'>" + movie.year + "</li>"
-            html += "<li class='list-unstyled'>" + movie.genre +"</li></h6>"
+            html += "<li class='list-unstyled'>" + movie.genre + "</li></h6>"
             html += "<img src='" + movie.poster + "'>";
             html += "<h6>" + movie.director + "</h6>";
             html += "<h6>" + movie.plot + "</h6>";
             html += "<h6>" + movie.actors + "</h6>"
-            html +=   "</div></div>";
+            html += "</div></div>";
             $(".load-movies").append(html)
         }
     }
 }
-// $('#addMovie').on('shown.bs.modal', function () {
-//     $('#myInput').trigger('focus')
-// })
-// $("#addMovie").click(function(){
-//
-// })
+
+$('#saveNewMovie').click(function () {
+    let newMovie = {
+        title: $("#title").val(),
+        rating: $("#rating").val(),
+        year: $("#year").val(),
+        genre: $("#genre").val(),
+        director: $("#director").val(),
+        plot: $("#plot").val(),
+        actors: $("#actors").val(),
+        poster: $("#poster").val()
+    }
+    // post for fetch
+    let post = {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newMovie)
+    };
+    fetch(glitchUrl, post)
+        .then(response => {
+            response.json()
+                .then(movieList => {
+                    $(".load-movies").html("");
+                    displayMovies(movieList)
+                })
+        })
+});
