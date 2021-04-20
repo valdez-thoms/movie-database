@@ -15,53 +15,110 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <form class="form-inline my-2 my-lg-0">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            <!-- Button trigger modal FOR ADD MOVIE -->
+            <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#add">
                 Add A Movie
+            </button>
+            <!-- Button trigger modal FOR EDIT MOVIE-->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
+               Edit Movie
             </button>
         </form>
     </div>
 </nav>
 <!--  modal for add movies  -->
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Add Your Movie</h5>
+                <h5 class="modal-title" id="ADDModalCenterTitle">Add Your Movie</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+
             </div>
-            <div class="modal-body">
+            <div class="modal-body mx-2">
                 <div class="row">
                 <form class= "d-flex flex-column">
                     <label for="title">Title:</label>
-                    <input id="title" type="text">
+                    <input aria-required="true" id="title" type="text">
                     <label for="rating">Rating:</label>
-                    <input id="rating" type="text">
+                    <input required id="rating" type="text">
                     <label for="year">Year:</label>
-                    <input id="year" type="text">
+                    <input required id="year" type="text">
                     <label for="genre">Genre:</label>
-                    <input id="genre" type="text">
+                    <input required id="genre" type="text">
                     <label for="director">Director:</label>
-                    <input id="director" type="text">
+                    <input required id="director" type="text">
                     <label for="plot">Plot:</label>
-                    <input id="plot" type="text">
+                    <input required id="plot" type="text">
                     <label for="actors">Actors:</label>
-                    <input id="actors" type="text">
+                    <input required id="actors" type="text">
                     <label for="poster">Movie Poster:</label>
-                    <input id="poster" type="text">
+                    <input required id="poster" type="text">
                 </form>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="saveNewMovie" type="button" class="btn btn-primary">Save changes</button>
+                <button id="editMovie" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
 </div>
+<!--  modal for EDIT movies  -->
+<!-- Modal -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Edit Movie</h5>
+                <div class="form-group">
+                <label for="editList">Select Movie to Edit</label>
+                <select class="form-control custom-select" id="editList">
+<!--                    <option>1</option>-->
+<!--                    <option>2</option>-->
+<!--                    <option>3</option>-->
+<!--                    <option>4</option>-->
+<!--                    <option>5</option>-->
+                </select>
+            </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+            <div class="modal-body mx-2">
+                <div class="row">
+                    <form class= "d-flex flex-column">
+                        <label for="titleEdit">Title:</label>
+                        <input aria-required="true" id="titleEdit" type="text">
+                        <label for="ratingEdit">Rating:</label>
+                        <input required id="ratingEdit" type="text">
+                        <label for="yearEdit">Year:</label>
+                        <input required id="yearEdit" type="text">
+                        <label for="genreEdit">Genre:</label>
+                        <input required id="genreEdit" type="text">
+                        <label for="directorEdit">Director:</label>
+                        <input required id="directorEdit" type="text">
+                        <label for="plotEdit">Plot:</label>
+                        <input required id="plotEdit" type="text">
+                        <label for="actorsEdit">Actors:</label>
+                        <input required id="actorsEdit" type="text">
+                        <label for="posterEdit">Movie Poster:</label>
+                        <input required id="posterEdit" type="text">
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="saveNewMovie" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--  Movie generation area  -->
 <div class="load-movies row m-2">
     ....Loading
