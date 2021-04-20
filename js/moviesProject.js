@@ -25,20 +25,28 @@ function displayMovies(movieList) {
     for (movie of movieList) {
         if (movie.title !== undefined && movie.rating !== undefined) {
             let html = "";
-            html = "<div class='card'>"
-            html += "<div className='card-body'>"
+            html = "<div class='card col-4 my-2'>"
+            html += "<div class='card-body'>"
             html += "<h5 class='card-title '>" + movie.title + "</h5>";
             html += "<h6 class='card-subtitle'><ul>";
-            html += "<li class='list-unstyled'>" + movie.rating + "</li>"
-            html += "<li class='list-unstyled'>" + movie.year + "</li>"
-            html += "<li class='list-unstyled'>" + movie.genre + "</li></h6>"
-            html += "<img src='" + movie.poster + "'>";
-            html += "<h6>" + movie.director + "</h6>";
-            html += "<h6>" + movie.plot + "</h6>";
-            html += "<h6>" + movie.actors + "</h6>"
+            html += "<li class='list-unstyled'>Rating: " + movie.rating + "</li>"
+            html += "<li class='list-unstyled'>Year: " + movie.year + "</li>"
+            html += "<li class='list-unstyled'>Genres: " + movie.genre + "</li></h6>"
+            html += "<img class='mb-1' src='" + movie.poster + "'>";
+            html += "<h6>Director: " + movie.director + "</h6>";
+            html += "<h6>Plot: " + movie.plot + "</h6>";
+            html += "<h6> Actors: " + movie.actors + "</h6>"
             html += "</div></div>";
             $(".load-movies").append(html)
         }
+    }
+    displayEditMovies(movieList)
+}
+function displayEditMovies(movieList){
+    for (movie of movieList) {
+            let html = "";
+            html = "<option value='" + movie.id + "'>"+movie.title+"</option>"
+            $("#editList").append(html)
     }
 }
 
