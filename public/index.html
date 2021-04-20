@@ -62,7 +62,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="editMovie" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+                <button id="saveNewMovie" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -77,12 +77,9 @@
                 <div class="form-group">
                 <label for="editList">Select Movie to Edit</label>
                 <select class="form-control custom-select" id="editList">
-<!--                    <option>1</option>-->
-<!--                    <option>2</option>-->
-<!--                    <option>3</option>-->
-<!--                    <option>4</option>-->
-<!--                    <option>5</option>-->
                 </select>
+                    <label for="delete">Delete entry?</label>
+                    <input id="delete" type="checkbox">
             </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -91,29 +88,29 @@
             </div>
             <div class="modal-body mx-2">
                 <div class="row">
-                    <form class= "d-flex flex-column">
+                    <form id="editForm" class= "d-flex flex-column">
                         <label for="titleEdit">Title:</label>
-                        <input aria-required="true" id="titleEdit" type="text">
+                        <input class="editElement" aria-required="true" id="titleEdit" type="text">
                         <label for="ratingEdit">Rating:</label>
-                        <input required id="ratingEdit" type="text">
+                        <input class="editElement" required id="ratingEdit" type="text">
                         <label for="yearEdit">Year:</label>
-                        <input required id="yearEdit" type="text">
+                        <input class="editElement" required id="yearEdit" type="text">
                         <label for="genreEdit">Genre:</label>
-                        <input required id="genreEdit" type="text">
+                        <input class="editElement" required id="genreEdit" type="text">
                         <label for="directorEdit">Director:</label>
-                        <input required id="directorEdit" type="text">
+                        <input class="editElement" required id="directorEdit" type="text">
                         <label for="plotEdit">Plot:</label>
-                        <input required id="plotEdit" type="text">
+                        <input class="editElement" required id="plotEdit" type="text">
                         <label for="actorsEdit">Actors:</label>
-                        <input required id="actorsEdit" type="text">
+                        <input class="editElement" required id="actorsEdit" type="text">
                         <label for="posterEdit">Movie Poster:</label>
-                        <input required id="posterEdit" type="text">
+                        <input class="editElement" required id="posterEdit" type="text">
                     </form>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="saveNewMovie" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+                <button id="editMovie" type="button" data-dismiss="modal" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

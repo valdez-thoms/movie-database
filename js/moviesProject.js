@@ -3,11 +3,11 @@ let glitchUrl = "https://zenith-mature-adapter.glitch.me/movies";
 
 // get for fetch
 let get = {
-        method: 'GET',
-        headers: {
-            "Content-Type": "application/json"
-        },
-    };
+    method: 'GET',
+    headers: {
+        "Content-Type": "application/json"
+    },
+};
 
 
 // initial fetch on page load
@@ -32,7 +32,7 @@ function displayMovies(movieList) {
             html += "<li class='list-unstyled'>Rating: " + movie.rating + "</li>"
             html += "<li class='list-unstyled'>Year: " + movie.year + "</li>"
             html += "<li class='list-unstyled'>Genres: " + movie.genre + "</li></h6>"
-            html += "<img class='mb-1' src='" + movie.poster + "'>";
+            html += "<img class='mb-1 w-100 position-relative' src='" + movie.poster + "'>";
             html += "<h6>Director: " + movie.director + "</h6>";
             html += "<h6>Plot: " + movie.plot + "</h6>";
             html += "<h6> Actors: " + movie.actors + "</h6>"
@@ -42,14 +42,45 @@ function displayMovies(movieList) {
     }
     displayEditMovies(movieList)
 }
-function displayEditMovies(movieList){
+
+// generate options for edit movies dropdown based on DB entries
+function displayEditMovies(movieList) {
     for (movie of movieList) {
-            let html = "";
-            html = "<option value='" + movie.id + "'>"+movie.title+"</option>"
-            $("#editList").append(html)
+        let html = "";
+        html = "<option value='" + movie.id + "'>" + movie.title + "</option>"
+        $("#editList").append(html)
     }
 }
 
+// on save changes to edit movie change selected movie value and repopulate movie list with changes
+$('#editMovie').click(function () {
+    if ($('#delete').prop('checked')) {
+        fetch(glitchUrl + `/${$('#editList').val()}`, {method: "DELETE",})
+            .then(response => {
+                console.log(response)
+                fetch(glitchUrl, get)
+                    .then(response => {
+                        response.json()
+                            .then(movieList => {
+                                $(".load-movies").html("");
+                                displayMovies(movieList)
+                            })
+                    })
+            })
+    } else {
+        fetch(glitchUrl + `/${$('#editList').val()}`, get)
+            .then(response => response.json())
+                .then(movie => {
+                    $('#editElement').each(function(){
+                        if ($('input').val() !== undefined){
+                            console.log($('input').val());
+                        }
+                    })
+                })
+    }
+
+})
+// on save changes in add movie modal generate movieList with new entry
 $('#saveNewMovie').click(function () {
     let newMovie = {
         title: $("#title").val(),
@@ -69,15 +100,18 @@ $('#saveNewMovie').click(function () {
         },
         body: JSON.stringify(newMovie)
     };
+
+    // sending the new movie to DB
     fetch(glitchUrl, post)
-        .then(response => { console.log(response)
+        .then(response => {
+            console.log(response)
             fetch(glitchUrl, get)
-            .then(response => {
-                response.json()
-                    .then(movieList => {
-                        $(".load-movies").html("");
-                        displayMovies(movieList)
-                    })
-            })
+                .then(response => {
+                    response.json()
+                        .then(movieList => {
+                            $(".load-movies").html("");
+                            displayMovies(movieList)
+                        })
+                })
         })
 });
