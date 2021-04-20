@@ -9,35 +9,41 @@ let options = {
         // body: JSON.stringify(movies)
     }
 ;
+
+// initial fetch on page load
 fetch(glitchUrl, options)
     .then(response => {
         response.json()
-        .then(movieList =>{
-            $(".load-movies").html("");
-            displayMovies(movieList)
+            .then(movieList => {
+                $(".load-movies").html("");
+                displayMovies(movieList)
+            })
     })
-})
 
-function displayMovies(movieList){
-    // console.log(movieList[0].title);
-
+// function to add each movie from promise to index.html
+function displayMovies(movieList) {
     for (movie of movieList) {
         if (movie.title !== undefined && movie.rating !== undefined) {
-        let html = "";
-        html = "<h6>" + movie.title + "</h6>";
-        html += "<h6>" + movie.rating + "</h6>";
-        html += "<img src='" + movie.poster + "'>";
-        html += "<h6>" + movie.year + "</h6>";
-        html += "<h6>" + movie.genre + "</h6>";
-        html += "<h6>" + movie.director + "</h6>";
-        html += "<h6>" + movie.plot + "</h6>";
-        html += "<h6>" + movie.actors + "</h6>";
-        $(".load-movies").append(html)
+            let html = "";
+            html = "<div class='card'>"
+            html += "<div className='card-body'>"
+            html += "<h5 class='card-title '>" + movie.title + "</h5>";
+            html += "<h6 class='card-subtitle'><ul>";
+            html += "<li class='list-unstyled'>" + movie.rating + "</li>"
+            html += "<li class='list-unstyled'>" + movie.year + "</li>"
+            html += "<li class='list-unstyled'>" + movie.genre +"</li></h6>"
+            html += "<img src='" + movie.poster + "'>";
+            html += "<h6>" + movie.director + "</h6>";
+            html += "<h6>" + movie.plot + "</h6>";
+            html += "<h6>" + movie.actors + "</h6>"
+            html +=   "</div></div>";
+            $(".load-movies").append(html)
+        }
     }
-
 }
-
-
-
-
-}
+// $('#addMovie').on('shown.bs.modal', function () {
+//     $('#myInput').trigger('focus')
+// })
+// $("#addMovie").click(function(){
+//
+// })
