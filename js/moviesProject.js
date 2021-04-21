@@ -68,17 +68,22 @@ $('#editMovie').click(function () {
                     })
             })
     } else {
+        console.log('hello')
         fetch(glitchUrl + `/${$('#editList').val()}`, get)
-            .then(response => response.json())
-                .then(movie => {
-                    $('#editElement').each(function(){
-                        if ($('input').val() !== undefined){
-                            console.log($('input').val());
-                        }
+            .then(response => {
+                response.json()
+                    .then(movie => {
+                        $('.editElement').each(function () {
+                            if ($(this).val().length !== 0) {
+                                if (Object.keys(movie).includes($(this).attr('id'))) {
+                                    console.log($(this).attr('id'))
+                                    console.log($(this).val());
+                                }
+                            }
+                        })
                     })
-                })
+            })
     }
-
 })
 // on save changes in add movie modal generate movieList with new entry
 $('#saveNewMovie').click(function () {
