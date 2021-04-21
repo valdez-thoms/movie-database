@@ -25,21 +25,29 @@ function displayMovies(movieList) {
     for (movie of movieList) {
         if (movie.title !== undefined && movie.rating !== undefined) {
             let html = "";
-            html = "<div class='card col-4 my-2'>"
+            html = "<div id=\"' + movie.id + '\" class='card col-4 my-2'>"
             html += "<div class='card-body'>"
             html += "<h5 class='card-title '>" + movie.title + "</h5>";
-            html += "<h6 class='card-subtitle'><ul>";
-            html += "<li class='list-unstyled'>Rating: " + movie.rating + "</li>"
-            html += "<li class='list-unstyled'>Year: " + movie.year + "</li>"
-            html += "<li class='list-unstyled'>Genres: " + movie.genre + "</li></h6>"
-            html += "<img class='mb-1 w-100 position-relative' src='" + movie.poster + "'>";
-            html += "<h6>Director: " + movie.director + "</h6>";
-            html += "<h6>Plot: " + movie.plot + "</h6>";
-            html += "<h6> Actors: " + movie.actors + "</h6>"
+            html += "<h6 class='card-subtitle m-0'><ul class='p-0 row'>";
+            html += "<li class='list-unstyled col-6'>Year: " + movie.year + "</li>"
+            html += "<li class='list-unstyled col-6'>Rating: " + movie.rating + "</li></h6>"
+            html += "<h6 class='hidden d-none list-unstyled'>Genres: " + movie.genre + "</h6>"
+            html += "<a class='image' href='#'><img class='mb-1 w-100 position-relative' src='" + movie.poster + "'></a>";
+            html += "<h6 class='hidden d-none'>Director: " + movie.director + "</h6>";
+            html += "<h6 class='hidden d-none'>Plot: " + movie.plot + "</h6>";
+            html += "<h6 class='hidden d-none'> Actors: " + movie.actors + "</h6>"
             html += "</div></div>";
             $(".load-movies").append(html)
         }
     }
+    $("a").click(function (){
+        $(this).parent().children().filter('.hidden').toggleClass('d-none');
+    })
+
+    // $(".card").click(function () {
+    //     console.log('hey')
+    //     $(this).toggleClass('d-none');
+    // });
     displayEditMovies(movieList)
 }
 
@@ -54,7 +62,7 @@ function displayEditMovies(movieList) {
 }
 
 
-$("#editList").on("change", function(){
+$("#editList").on("change", function () {
     fetch(glitchUrl + `/${$('#editList').val()}`, get)
         .then(response => {
             response.json()
@@ -67,7 +75,7 @@ $("#editList").on("change", function(){
                     $("#plot").val(movie.plot);
                     $("#actors").val(movie.actors);
                     $("#poster").val(movie.poster);
-            })
+                })
         })
 })
 
@@ -96,14 +104,14 @@ $('#editMovie').click(function () {
                                 if (Object.keys(movie).includes($(this).attr('id'))) {
                                     let matchingKey = $(this).attr('id');
                                     editMovie[matchingKey] = $(this).val();
-                                    let patch ={
+                                    let patch = {
                                         method: "PATCH",
                                         headers: {
                                             "Content-Type": "application/json",
                                         },
                                         body: JSON.stringify(editMovie)
                                     }
-                                    fetch(glitchUrl + `/${$('#editList').val()}`, patch).then(function(response){
+                                    fetch(glitchUrl + `/${$('#editList').val()}`, patch).then(function (response) {
                                         console.log(response)
                                         fetch(glitchUrl, get)
                                             .then(response => {
@@ -156,3 +164,5 @@ $('#saveNewMovie').click(function () {
                 })
         })
 });
+
+
