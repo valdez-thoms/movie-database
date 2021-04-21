@@ -45,7 +45,7 @@ function displayMovies(movieList) {
 
 // generate options for edit movies dropdown based on DB entries
 function displayEditMovies(movieList) {
-    $("#editList").html("");
+    $("#editList").html("<option selected>Choose...</option>");
     for (movie of movieList) {
         let html = "";
         html = "<option value='" + movie.id + "'>" + movie.title + "</option>"
