@@ -45,12 +45,31 @@ function displayMovies(movieList) {
 
 // generate options for edit movies dropdown based on DB entries
 function displayEditMovies(movieList) {
+    $("#editList").html("");
     for (movie of movieList) {
         let html = "";
         html = "<option value='" + movie.id + "'>" + movie.title + "</option>"
         $("#editList").append(html)
     }
 }
+
+
+$("#editList").on("change", function(){
+    fetch(glitchUrl + `/${$('#editList').val()}`, get)
+        .then(response => {
+            response.json()
+                .then(movie => {
+                    $("#title").val(movie.title);
+                    $("#rating").val(movie.rating);
+                    $("#year").val(movie.year);
+                    $("#genre").val(movie.genre);
+                    $("#director").val(movie.director);
+                    $("#plot").val(movie.plot);
+                    $("#actors").val(movie.actors);
+                    $("#poster").val(movie.poster);
+            })
+        })
+})
 
 // on save changes to edit movie change selected movie value and repopulate movie list with changes
 $('#editMovie').click(function () {
