@@ -54,9 +54,9 @@
                     <label for="actorsAdd">Actors:</label>
                     <input class="w-100"  required id="actorsAdd" type="text">
                     <label for="posterAdd">Movie Poster:</label>
-                    <input class="w-100" required id="posterAdd" type="text">
+                    <input required id="posterAdd" type="text">
                     <label for="plotAdd">Plot:</label>
-                    <input class="w-100" required id="plotAdd" type="text">
+                    <textarea rows="4" cols="50" class="w-100" required id="plotAdd" type="text"></textarea>
                 </form>
                 </div>
             </div>
@@ -77,6 +77,7 @@
                 <div class="form-group">
                 <label for="editList">Select Movie to Edit</label>
                 <select class="form-control custom-select" id="editList">
+                    <option selected>Choose...</option>
                 </select>
                     <label for="delete">Delete entry?</label>
                     <input id="delete" type="checkbox">
@@ -99,12 +100,13 @@
                         <input class="editElement" required id="genre" type="text">
                         <label for="director">Director:</label>
                         <input class="editElement" required id="director" type="text">
-                        <label for="plot">Plot:</label>
-                        <input class="editElement" required id="plot" type="text">
                         <label for="actors">Actors:</label>
                         <input class="editElement" required id="actors" type="text">
                         <label for="poster">Movie Poster:</label>
                         <input class="editElement" required id="poster" type="text">
+                        <label for="plot">Plot:</label>
+                        <textarea rows="4" cols="50"class="editElement" required id="plot" type="text"></textarea>
+
                     </form>
                 </div>
             </div>
