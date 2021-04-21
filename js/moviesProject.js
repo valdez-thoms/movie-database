@@ -57,7 +57,6 @@ $('#editMovie').click(function () {
     if ($('#delete').prop('checked')) {
         fetch(glitchUrl + `/${$('#editList').val()}`, {method: "DELETE",})
             .then(response => {
-                console.log(response)
                 fetch(glitchUrl, get)
                     .then(response => {
                         response.json()
@@ -68,16 +67,35 @@ $('#editMovie').click(function () {
                     })
             })
     } else {
-        console.log('hello')
         fetch(glitchUrl + `/${$('#editList').val()}`, get)
             .then(response => {
                 response.json()
                     .then(movie => {
+                        let editMovie = {};
                         $('.editElement').each(function () {
                             if ($(this).val().length !== 0) {
                                 if (Object.keys(movie).includes($(this).attr('id'))) {
-                                    console.log($(this).attr('id'))
-                                    console.log($(this).val());
+                                    let matchingKey = $(this).attr('id');
+                                    editMovie[matchingKey] = $(this).val();
+                                    let patch ={
+                                        method: "PATCH",
+                                        headers: {
+                                            "Content-Type": "application/json",
+                                        },
+                                        body: JSON.stringify(editMovie)
+                                    }
+                                    fetch(glitchUrl + `/${$('#editList').val()}`, patch).then(function(response){
+                                        console.log(response)
+                                        fetch(glitchUrl, get)
+                                            .then(response => {
+                                                response.json()
+                                                    .then(movieList => {
+                                                        $(".load-movies").html("");
+                                                        displayMovies(movieList)
+                                                    })
+                                            })
+                                    })
+
                                 }
                             }
                         })
@@ -109,7 +127,6 @@ $('#saveNewMovie').click(function () {
     // sending the new movie to DB
     fetch(glitchUrl, post)
         .then(response => {
-            console.log(response)
             fetch(glitchUrl, get)
                 .then(response => {
                     response.json()
