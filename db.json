@@ -1,7 +1,7 @@
 {
   "movies": [
     {
-      "title": "down",
+      "title": "Black Hawk Down",
       "rating": "5",
       "poster": "https://m.media-amazon.com/images/M/MV5BYWMwMzQxZjQtODM1YS00YmFiLTk1YjQtNzNiYWY1MDE4NTdiXkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_SX300.jpg",
       "year": "2001",
@@ -12,7 +12,7 @@
       "id": 2
     },
     {
-      "title": "tenet",
+      "title": "Tenet",
       "rating": "5",
       "poster": "https://m.media-amazon.com/images/M/MV5BYzg0NGM2NjAtNmIxOC00MDJmLTg5ZmYtYzM0MTE4NWE2NzlhXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_SX300.jpg",
       "year": "2020",
@@ -23,8 +23,8 @@
       "id": 3
     },
     {
-      "title": "resident evil",
-      "rating": "5",
+      "title": "Resident Evil 2",
+      "rating": "6.7",
       "poster": "https://m.media-amazon.com/images/M/MV5BZmI1ZGRhNDYtOGVjZC00MmUyLThlNTktMTQyZGE3MzE1ZTdlXkEyXkFqcGdeQXVyNDE5MTU2MDE@._V1_SX300.jpg",
       "year": "2002",
       "genre": "Action, Horror, Sci-Fi",
@@ -34,191 +34,81 @@
       "id": 4
     },
     {
+      "title": "The Shawshank Redemption",
+      "rating": "9.3",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
+      "year": "1994",
+      "genre": "Drama",
+      "director": " Frank Darabont",
+      "plot": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+      "actors": "Tim Robbins, Morgan Freeman, Bob Gunton ",
       "id": 5
     },
     {
+      "title": "The Godfather",
+      "rating": "9.2",
+      "poster": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+      "year": "1972",
+      "genre": "Crime, Drama",
+      "director": "Francis Ford Coppola",
+      "plot": "An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.",
+      "actors": "Marlon Brando, Al Pacino, James Caan",
       "id": 6
     },
     {
+      "title": "The Godfather: Part II",
+      "rating": "9.0",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMWMwMGQzZTItY2JlNC00OWZiLWIyMDctNDk2ZDQ2YjRjMWQ0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+      "year": "1974",
+      "genre": "Crime, Drama",
+      "director": "Francis Ford Coppola",
+      "plot": "The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.",
+      "actors": "Al Pacino, Robert De Niro, Robert Duvall",
       "id": 7
     },
     {
+      "title": "The Dark Knight",
+      "rating": "9.0",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+      "year": "2008",
+      "genre": "Action, Crime, Drama",
+      "director": "Christopher Nolan",
+      "plot": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+      "actors": "Christian Bale, Heath Ledger, Aaron Eckhart",
       "id": 8
     },
     {
+      "title": "12 Angry Men",
+      "rating": "9.0",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMWU4N2FjNzYtNTVkNC00NzQ0LTg0MjAtYTJlMjFhNGUxZDFmXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg",
+      "year": "1957",
+      "genre": "Crime, Drama",
+      "director": "Sidney Lumet",
+      "plot": "A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.",
+      "actors": "Henry Fonda, Lee J. Cobb, Martin Balsam",
       "id": 9
     },
     {
+      "title": "Thunder Force",
+      "rating": "4.4",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMWZkM2I2NjEtNWM0Mi00MTgwLWJlYTAtYmNkZWYzNmQ1ZTBiXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SX300.jpg",
+      "year": "2021",
+      "genre": "Action, Adventure, Comedy",
+      "director": "Ben Falcone",
+      "plot": "In a world where supervillains are commonplace, two estranged childhood best friends reunite after one devises a treatment that gives them powers to protect their city.",
+      "actors": "Melissa McCarthy, Octavia Spencer, Jason Bateman",
       "id": 10
     },
     {
+      "title": "Mortal Kombat",
+      "rating": "7.0",
+      "poster": "https://m.media-amazon.com/images/M/MV5BY2ZlNWIxODMtN2YwZi00ZjNmLWIyN2UtZTFkYmZkNDQyNTAyXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_UX182_CR0,0,182,268_AL_.jpg",
+      "year": "2021",
+      "genre": "Action, Adventure, Fantasy",
+      "director": "Simon McQuoid",
+      "plot": "MMA fighter Cole Young seeks out Earth's greatest champions in order to stand against the enemies of Outworld in a high stakes battle for the universe.",
+      "actors": "Lewis Tan, Jessica McNamee, Josh Lawson",
       "id": 11
-    },
-    {
-      "id": 12
-    },
-    {
-      "id": 13
-    },
-    {
-      "id": 14
-    },
-    {
-      "title": "test",
-      "id": 15
-    },
-    {
-      "id": 16
-    },
-    {
-      "id": 17
-    },
-    {
-      "id": 18
-    },
-    {
-      "id": 19
-    },
-    {
-      "id": 20
-    },
-    {
-      "id": 21
-    },
-    {
-      "id": 22
-    },
-    {
-      "id": 23
-    },
-    {
-      "id": 24
-    },
-    {
-      "id": 25
-    },
-    {
-      "id": 26
-    },
-    {
-      "id": 27
-    },
-    {
-      "id": 28
-    },
-    {
-      "id": 29
-    },
-    {
-      "id": 30
-    },
-    {
-      "id": 31
-    },
-    {
-      "id": 32
-    },
-    {
-      "id": 33
-    },
-    {
-      "id": 34
-    },
-    {
-      "id": 35
-    },
-    {
-      "id": 36
-    },
-    {
-      "id": 37
-    },
-    {
-      "id": 38
-    },
-    {
-      "id": 39
-    },
-    {
-      "id": 40
-    },
-    {
-      "id": 41
-    },
-    {
-      "id": 42
-    },
-    {
-      "id": 43
-    },
-    {
-      "id": 44
-    },
-    {
-      "id": 45
-    },
-    {
-      "id": 46
-    },
-    {
-      "id": 47
-    },
-    {
-      "id": 48
-    },
-    {
-      "id": 49
-    },
-    {
-      "id": 50
-    },
-    {
-      "id": 51
-    },
-    {
-      "id": 52
-    },
-    {
-      "id": 53
-    },
-    {
-      "id": 54
-    },
-    {
-      "id": 55
-    },
-    {
-      "id": 56
-    },
-    {
-      "id": 57
-    },
-    {
-      "id": 58
-    },
-    {
-      "id": 59
-    },
-    {
-      "id": 60
-    },
-    {
-      "id": 61
-    },
-    {
-      "id": 62
-    },
-    {
-      "id": 63
-    },
-    {
-      "id": 64
-    },
-    {
-      "id": 65
-    },
-    {
-      "id": 66
     }
   ]
 }
