@@ -27,7 +27,8 @@ function displayMovies(movieList) {
     for (movie of movieList) {
         genres.push(movie.genre);
         let html = "";
-        html = "<div id='" + movie.id + "' class='card d-flex flex-wrap col-4 my-2'>"
+        // html = "<div class="genre"></div>"
+        html += "<div id='" + movie.id + "' class='card d-flex flex-wrap col-4 my-2'>"
         html += "<div class='card-body'>"
         html += "<h5 class='card-title '><span>" + movie.title + "</span></h5>";
         html += "<h6 class='card-subtitle m-0'><ul class='p-0 row'>";
@@ -57,31 +58,6 @@ $("#sortRatingHtoL").click(function () {
                     displayMovies(sorted);
                 })
         })
-
-    // let sorted = [];
-    // sorted = movieList.sort((a, b) => (a.rating > b.rating) ? 1 : -1);
-    // console.log(sorted);
-    //
-    // let post = {
-    //     method: 'POST',
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(sorted)
-    // };
-    //
-    // // sending the new movie to DB
-    // fetch(glitchUrl, post)
-    //     .then(response => {
-    //         fetch(glitchUrl, get)
-    //             .then(response => {
-    //                 response.json()
-    //                     .then(sortedMovies => {
-    //                         $(".load-movies").html("");
-    //                         displayMovies(sortedMovies)
-    //                     })
-    //             })
-    //     })
 })
 $("#sortRatingLtoH").click(function () {
     fetch(glitchUrl, get)
@@ -139,7 +115,7 @@ $('#searchBar').on('input', function (e) {
                     console.log('hey')
                     for (movie of movieList) {
                         if (movie.rating.toUpperCase().includes(searchValue) || movie.genre.toUpperCase().includes(searchValue) || movie.title.toUpperCase().includes(searchValue)) {
-                             console.log(filteredMovies.push(movie))
+                            console.log(filteredMovies.push(movie))
                         }
                     }
                     console.log(filteredMovies)
@@ -148,35 +124,42 @@ $('#searchBar').on('input', function (e) {
                 })
         })
 })
-//***** EVENT LISTENER GETS MOVIES FROM DB AND GENERATES THE MOVIES SORTED INTO GENRES ********//
-// $("#filterGenre").click(function () {
-//     fetch(glitchUrl, get)
-//         .then(response => {
-//             response.json()
-//                 .then(movieList => {
-//                     genres = genres.join(',').replace(/\s+/g, '').split(',')
-//                     genres = genres.filter(genreList);
-//                     for (movie of movieList) {
-//                         for (genre of genres) {
-//                         }
-//                     }
-//                 })
-//         })
-// })
-//
-// // function to grab unique list of genres
-// function genreList(value, index, self) {
-//     return self.indexOf(value) === index
-// }
+// ***** EVENT LISTENER GETS MOVIES FROM DB AND GENERATES THE MOVIES SORTED INTO GENRES ********//
+$("#filterGenre").click(function () {
+    fetch(glitchUrl, get)
+        .then(response => {
+            response.json()
+                .then(movieList => {
+                    genres = genres.join(',').replace(/\s+/g, '').split(',')
+                    genres = genres.filter(genreList);
+                    let genreArray = []
+                    for (genre of genres) {
+                        let genreObject = {
+                            title: genre,
+                            movies: []
+                        }
+                        for (movie of movieList) {
+                            if (movie.genre.includes(genre)) {
+                                genreObject.movies.push(movie)
+                            }
+                        }
+                        genreArray.push(genreObject)
+                        console.log(genreArray)
+                    }
+                    $(".load-movies").html("")
+                    for (genre of genreArray){
+                        $(".load-movies").append(`<div id='${genre.title}' class="col-12 d-flex flex-wrap"><h1>${genre.title}</h1>`)
+                       displayMovies(genre.movies)
+                        $(".load-movies").append('</div>')
+                    }
+                })
+        })
+})
 
-// console.log(movieList)
-// let ratings = [];
-// $(".card-title").each(function (){
-//     ratings.push($(this).text());
-//
-// })
-// console.log(ratings);
-// console.log(ratings.sort());
+// function to grab unique list of genres
+function genreList(value, index, self) {
+    return self.indexOf(value) === index
+};
 
 
 //*********** GENERATES SELECT LIST ON EDIT MODAL **************//
