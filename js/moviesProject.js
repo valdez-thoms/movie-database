@@ -29,13 +29,13 @@ function displayMovies(movieList) {
         html += "<div class='card-body'>"
         html += "<h5 class='card-title '><span>" + movie.title + "</span></h5>";
         html += "<h6 class='card-subtitle m-0'><ul class='p-0 row'>";
-        html += "<li class='list-unstyled col-6'>Year: " + movie.year + "</li>"
-        html += "<li class='list-unstyled col-6'>Rating: " + movie.rating + "/10</li></h6>"
+        html += "<li class='list-unstyled col-6'><span>Year:</span> " + movie.year + "</li>"
+        html += "<li class='list-unstyled col-6'><span>Rating:</span> " + movie.rating + "/10</li></h6>"
         html += "<a class='image' href='#" + movie.id + "'><img class='imgMovie mb-1 w-100 position-relative' src='" + movie.poster + "'></a>";
-        html += "<h6 class='hidden d-none list-unstyled'>Genres: " + movie.genre + "</h6>"
-        html += "<h6 class='hidden d-none'>Director: " + movie.director + "</h6>";
-        html += "<h6 class='hidden d-none'> Actors: " + movie.actors + "</h6>"
-        html += "<h6 class='hidden d-none'>Plot: " + movie.plot + "</h6>";
+        html += "<h6 class='hidden d-none list-unstyled'><span>Genres:</span> " + movie.genre + "</h6>"
+        html += "<h6 class='hidden d-none'><span>Director:</span> " + movie.director + "</h6>";
+        html += "<h6 class='hidden d-none'><span>Actors:</span> " + movie.actors + "</h6>"
+        html += "<h6 class='hidden d-none'><span>Plot:</span> " + movie.plot + "</h6>";
         html += "</div></div>";
         $(".load-movies").append(html)
     }
