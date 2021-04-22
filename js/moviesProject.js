@@ -25,13 +25,13 @@ function getDatabase(glitchUrl, get){
 function displayMovies(movieList) {
     for (movie of movieList) {
         let html = "";
-        html = "<div id='" + movie.id + "' class='card col-3 my-2'>"
+        html = "<div id='" + movie.id + "' class='card d-flex flex-wrap col-4 my-2'>"
         html += "<div class='card-body'>"
-        html += "<h5 class='card-title '>" + movie.title + "</h5>";
+        html += "<h5 class='card-title '><span>" + movie.title + "</span></h5>";
         html += "<h6 class='card-subtitle m-0'><ul class='p-0 row'>";
         html += "<li class='list-unstyled col-6'>Year: " + movie.year + "</li>"
         html += "<li class='list-unstyled col-6'>Rating: " + movie.rating + "/10</li></h6>"
-        html += "<a class='image' href='#" + movie.id + "'><img class='mb-1 w-100 position-relative' src='" + movie.poster + "'></a>";
+        html += "<a class='image' href='#" + movie.id + "'><img class='imgMovie mb-1 w-100 position-relative' src='" + movie.poster + "'></a>";
         html += "<h6 class='hidden d-none list-unstyled'>Genres: " + movie.genre + "</h6>"
         html += "<h6 class='hidden d-none'>Director: " + movie.director + "</h6>";
         html += "<h6 class='hidden d-none'> Actors: " + movie.actors + "</h6>"
@@ -45,41 +45,95 @@ function displayMovies(movieList) {
     generateSelectList(movieList);
 }
 
-    // $("#filterRating").click(function () {
-    //     let sorted = [];
-    //     sorted = movieList.sort((a, b) => (a.rating > b.rating) ? 1 : -1);
-    //     console.log(sorted);
-    //
-    //     let post = {
-    //         method: 'POST',
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(sorted)
-    //     };
-    //
-    //     // sending the new movie to DB
-    //     fetch(glitchUrl, post)
-    //         .then(response => {
-    //             fetch(glitchUrl, get)
-    //                 .then(response => {
-    //                     response.json()
-    //                         .then(sortedMovies => {
-    //                             $(".load-movies").html("");
-    //                             displayMovies(sortedMovies)
-    //                         })
-    //                 })
-    //         })
+$("#sortRatingHtoL").click(function () {
+    fetch(glitchUrl, get)
+        .then(response => {
+            response.json()
+                .then( movieList => {
+                    let sorted = movieList.sort((a, b) => (a.rating > b.rating) ? -1 : 1);
+                    $(".load-movies").html("");
+                    displayMovies(sorted);
+                })
+        })
 
+    // let sorted = [];
+    // sorted = movieList.sort((a, b) => (a.rating > b.rating) ? 1 : -1);
+    // console.log(sorted);
+    //
+    // let post = {
+    //     method: 'POST',
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(sorted)
+    // };
+    //
+    // // sending the new movie to DB
+    // fetch(glitchUrl, post)
+    //     .then(response => {
+    //         fetch(glitchUrl, get)
+    //             .then(response => {
+    //                 response.json()
+    //                     .then(sortedMovies => {
+    //                         $(".load-movies").html("");
+    //                         displayMovies(sortedMovies)
+    //                     })
+    //             })
+    //     })
+})
+$("#sortRatingLtoH").click(function () {
+    fetch(glitchUrl, get)
+        .then(response => {
+            response.json()
+                .then( movieList => {
+                    let sorted = movieList.sort((a, b) => (a.rating > b.rating) ? 1 : -1);
+                    $(".load-movies").html("");
+                    displayMovies(sorted);
+                })
+        })
+})
+
+$("#sortTitleAtoZ").click(function (){
+    console.log("sort title")
+    fetch(glitchUrl, get)
+        .then(response => {
+            response.json()
+                .then( movieList => {
+                    console.log(movieList)
+                    let sorted = movieList.sort((a, b) => (a.title > b.title) ? 1 : -1);
+                    console.log(sorted)
+                    $(".load-movies").html("");
+                    displayMovies(sorted);
+                })
+        })
+
+})
+$("#sortTitleZtoA").click(function (){
+    console.log("sort title")
+    fetch(glitchUrl, get)
+        .then(response => {
+            response.json()
+                .then( movieList => {
+                    console.log(movieList)
+                    let sorted = movieList.sort((a, b) => (a.title > b.title) ? -1 : 1);
+                    console.log(sorted)
+                    $(".load-movies").html("");
+                    displayMovies(sorted);
+                })
+        })
+
+})
+$("#sortGenre").click(function (){
+
+})
+    // console.log(movieList)
+    // let ratings = [];
+    // $(".card-title").each(function (){
+    //     ratings.push($(this).text());
+    //
     // })
-        // console.log(movieList)
-        // let ratings = [];
-        // $(".card-title").each(function (){
-        //     ratings.push($(this).text());
-        //
-        // })
-        // console.log(ratings);
-        // console.log(ratings.sort());
+    // console.log(ratings);
+    // console.log(ratings.sort());
 
 
 //*********** GENERATES SELECT LIST ON EDIT MODAL **************//
@@ -175,10 +229,5 @@ $('#saveNewMovie').click(function () {
         })
 });
 
-//
-// $("#filterTitle").click(function (){
-//
-// })
-// $("#filterGenre").click(function (){
-//
-// })
+
+

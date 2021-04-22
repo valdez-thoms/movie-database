@@ -2,60 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Movies</title>
+    <title>Rollie's Movie Barn</title>
     <!--  Bootstrap CDN CSS  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <style>
-        .loader {
-            border: 16px solid #f3f3f3; /* Light grey */
-            border-top: 16px solid #3498db; /* Blue */
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-    </style>
+    <link rel="stylesheet" href="../css/custom.css">
 </head>
 <body>
 <!--********************  NAVBAR  *****************************-->
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Rollie's Movie Barn</a>
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light p-0">
+    <a class="navbar-brand m-0 p-0" href="#"><img src="../img/rollies_logo.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="form-inline my-2 my-lg-0">
+        <form class="ml-auto form-inline my-2 my-lg-0">
             <!-- BUTTON FOR ADD MOVIE IN NAVBAR -->
             <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#add">
                 Add A Movie
             </button>
             <!-- BUTTON FOR EDIT MOVIE IN NAVBAR-->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit">
-               Edit Movie
+            <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#edit">
+               Edit/Delete Movie
             </button>
         </form>
     </div>
-    <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Filter by
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" id="filterRating" href="#">Rating</a>
-            <a class="dropdown-item" id="filterTitle" href="#">Title</a>
-            <a class="dropdown-item" id="filterGenre" href="#">Genre</a>
-        </div>
-    </div>
+
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Rating, Title or Genre" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" id="searchMovie">Search</button>
     </form>
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sort by
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" id="sortRatingHtoL" href="#">Ratings: High to Low</a>
+            <a class="dropdown-item" id="sortRatingLtoH" href="#">Ratings: Low to High</a>
+            <a class="dropdown-item" id="sortTitleAtoZ" href="#">Titles: A to Z</a>
+            <a class="dropdown-item" id="sortTitleZtoA" href="#">Titles: Z to A</a>
+            <!--            <a class="dropdown-item" id="filterGenre" href="#">Genre</a>-->
+        </div>
+    </div>
 </nav>
 
 <!--*********************  MODAL FOR ADD MOVIES  ********************-->
@@ -87,7 +74,7 @@
                     <label for="posterAdd">Movie Poster:</label>
                     <input id="posterAdd" type="text">
                     <label for="plotAdd">Plot:</label>
-                    <textarea rows="4" cols="50" class="w-100" id="plotAdd" type="text"></textarea>
+                    <textarea rows="4" cols="45" class="w-100" id="plotAdd" type="text"></textarea>
                 </form>
                 </div>
             </div>
@@ -103,9 +90,9 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Edit/Delete Movie</h5>
+<!--                <h5 class="modal-title" id="exampleModalCenterTitle">Edit Movie</h5>-->
                 <div class="form-group">
-                <label for="editList">Select Movie to Edit</label>
+                <label for="editList">Select Movie to Edit/Delete</label>
                 <select class="form-control custom-select" id="editList">
                     <option selected>Choose...</option>
                 </select>
@@ -135,7 +122,7 @@
                         <label for="poster">Movie Poster:</label>
                         <input class="editElement" id="poster" type="text">
                         <label for="plot">Plot:</label>
-                        <textarea rows="4" cols="50"class="editElement" id="plot" type="text"></textarea>
+                        <textarea rows="4" cols="45"class="editElement" id="plot" type="text"></textarea>
 
                     </form>
                 </div>
@@ -149,6 +136,7 @@
 </div>
 
 <!--*********************  MOVIE DISPLAY AREA  ********************-->
+
 <div class="load-movies row m-2">
     <div class="loader"></div>
 </div>
