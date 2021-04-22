@@ -192,6 +192,14 @@ $('#editMovie').click(function () {
                                     }
                                     fetch(glitchUrl + `/${$('#editList').val()}`, patch).then(function (response) {
                                         getDatabase(glitchUrl, get)
+                                        $("#title").val("");
+                                        $("#rating").val("");
+                                        $("#year").val("");
+                                        $("#genre").val("");
+                                        $("#director").val("");
+                                        $("#plot").val("");
+                                        $("#actors").val("");
+                                        $("#poster").val("");
                                     })
 
                                 }
@@ -226,6 +234,7 @@ $('#saveNewMovie').click(function () {
     fetch(glitchUrl, post)
         .then(response => {
             getDatabase(glitchUrl, get)
+
         })
 });
 
