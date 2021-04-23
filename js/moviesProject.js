@@ -101,7 +101,42 @@ $("#sortTitleZtoA").click(function () {
         })
 
 })
-
+/// search submit button
+// works but maybe use a modal to display the alert and confirmation
+// $('#searchSubmit').click(function (e) {
+//     e.preventDefault();
+//     let searchValue = searchEntry.value.toLowerCase();
+//     let movieCheck = false
+//     $('.card-title').each(function() {
+//         console.log($(this).text())
+//         if ($(this).text().toLowerCase().includes(searchValue)) {
+//             movieCheck = true
+//         }
+//     })
+//     console.log(movieCheck)
+//     if (movieCheck === false) {
+//         searchValue = searchValue.replace(' ', "+");
+//         fetch(movieURL + movieKey + searchValue, getMovie)
+//             .then(response => response.json()
+//                 .then(data => {
+//                     // if (confirm(`Is ${data.Title} with a plot of "${data.Plot}", the movie you were looking for?`)) {
+//                     //     if (confirm(`we havent added that movie yet!, would you like to add it now?`)) {
+//                             $("#add").modal('show')
+//                             $("#titleAdd").val(data.Title)
+//                             $("#ratingAdd").val(data.imdbRating)
+//                             $("#yearAdd").val(data.Year)
+//                             $("#genreAdd").val(data.Genre)
+//                             $("#directorAdd").val(data.Director)
+//                             $("#plotAdd").val(data.Plot)
+//                             $("#actorsAdd").val(data.Actors)
+//                             $("#posterAdd").val(data.Poster)
+//                     //     }
+//                     // }
+//                 }))
+//     }
+//
+//
+// })
 //// search entry function
 let searchEntry = document.querySelector('#searchBar')
 $('#searchBar').on('input', function (e) {
@@ -112,13 +147,11 @@ $('#searchBar').on('input', function (e) {
         response => {
             response.json().then(
                 movieList => {
-                    console.log('hey')
                     for (movie of movieList) {
                         if (movie.rating.toUpperCase().includes(searchValue) || movie.genre.toUpperCase().includes(searchValue) || movie.title.toUpperCase().includes(searchValue)) {
-                            console.log(filteredMovies.push(movie))
+                            filteredMovies.push(movie)
                         }
                     }
-                    console.log(filteredMovies)
                     $(".load-movies").html("")
                     displayMovies(filteredMovies);
                 })
@@ -147,9 +180,9 @@ $("#filterGenre").click(function () {
                         console.log(genreArray)
                     }
                     $(".load-movies").html("")
-                    for (genre of genreArray){
+                    for (genre of genreArray) {
                         $(".load-movies").append(`<div id='${genre.title}' class="col-12 d-flex flex-wrap"><h1>${genre.title}</h1>`)
-                       displayMovies(genre.movies)
+                        displayMovies(genre.movies)
                         $(".load-movies").append('</div>')
                     }
                 })
