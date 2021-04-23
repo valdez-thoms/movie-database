@@ -103,40 +103,62 @@ $("#sortTitleZtoA").click(function () {
 })
 /// search submit button
 // works but maybe use a modal to display the alert and confirmation
-// $('#searchSubmit').click(function (e) {
-//     e.preventDefault();
-//     let searchValue = searchEntry.value.toLowerCase();
-//     let movieCheck = false
-//     $('.card-title').each(function() {
-//         console.log($(this).text())
-//         if ($(this).text().toLowerCase().includes(searchValue)) {
-//             movieCheck = true
-//         }
-//     })
-//     console.log(movieCheck)
-//     if (movieCheck === false) {
-//         searchValue = searchValue.replace(' ', "+");
-//         fetch(movieURL + movieKey + searchValue, getMovie)
-//             .then(response => response.json()
-//                 .then(data => {
-//                     // if (confirm(`Is ${data.Title} with a plot of "${data.Plot}", the movie you were looking for?`)) {
-//                     //     if (confirm(`we havent added that movie yet!, would you like to add it now?`)) {
-//                             $("#add").modal('show')
-//                             $("#titleAdd").val(data.Title)
-//                             $("#ratingAdd").val(data.imdbRating)
-//                             $("#yearAdd").val(data.Year)
-//                             $("#genreAdd").val(data.Genre)
-//                             $("#directorAdd").val(data.Director)
-//                             $("#plotAdd").val(data.Plot)
-//                             $("#actorsAdd").val(data.Actors)
-//                             $("#posterAdd").val(data.Poster)
-//                     //     }
-//                     // }
-//                 }))
-//     }
-//
-//
-// })
+$('#searchMovie').click(function (e) {
+    e.preventDefault();
+    let searchValue = searchEntry.value.toLowerCase();
+    let movieCheck = false;
+    $('.card-title').each(function() {
+        console.log($(this).text())
+        if ($(this).text().toLowerCase().includes(searchValue)) {
+            movieCheck = true
+        }
+    })
+    console.log(movieCheck)
+    if (movieCheck === false) {
+        searchValue = searchValue.replace(' ', "+");
+        fetch("http://www.omdbapi.com/?t=superman+2&apikey=754ec2e3")
+            .then(response => {
+                response.json()
+                    .then(movieList => {
+                        let {Actors, Director, Genre, Plot, Year, Poster, Title, imdbRating} = movieList;
+                        movielist = {};
+                        movieList = {
+                            title: Title,
+                            year: Year,
+                            rating: imdbRating,
+                            genre: Genre,
+                            director: Director,
+                            actors: Actors,
+                            plot: Plot,
+                        }
+                        console.log(movieList)
+
+                        // let sorted = movieList.sort((a, b) => (a.title > b.title) ? -1 : 1);
+                        // console.log(sorted)
+                        // $(".load-movies").html("");
+                        // displayMovies(sorted);
+                    })
+            })
+            // .then(movie => console.log(movie))
+        //         .then(data => {
+        //             // if (confirm(`Is ${data.Title} with a plot of "${data.Plot}", the movie you were looking for?`)) {
+        //             //     if (confirm(`we havent added that movie yet!, would you like to add it now?`)) {
+        //                     $("#add").modal('show')
+        //                     $("#titleAdd").val(data.Title)
+        //                     $("#ratingAdd").val(data.imdbRating)
+        //                     $("#yearAdd").val(data.Year)
+        //                     $("#genreAdd").val(data.Genre)
+        //                     $("#directorAdd").val(data.Director)
+        //                     $("#plotAdd").val(data.Plot)
+        //                     $("#actorsAdd").val(data.Actors)
+        //                     $("#posterAdd").val(data.Poster)
+        //             //     }
+        //             // }
+        //         }))
+    }
+
+
+})
 //// search entry function
 let searchEntry = document.querySelector('#searchBar')
 $('#searchBar').on('input', function (e) {
