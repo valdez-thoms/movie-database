@@ -28,8 +28,8 @@ function displayMovies(movieList) {
         genres.push(movie.genre);
         let html = "";
         // html = "<div class="genre"></div>"
-        html += "<div id='" + movie.id + "' class='card d-flex flex-wrap col-4 my-2'>"
-        html += "<div class='card-body'>"
+        html += "<div id='" + movie.id + "' class='card d-flex flex-wrap col-4 my-2'>";
+        html += "<div class='card-body'>";
         html += "<h5 class='card-title '><span>" + movie.title + "</span></h5>";
         html += "<h6 class='card-subtitle m-0'><ul class='p-0 row'>";
         html += "<li class='list-unstyled col-6'><span>Year:</span> " + movie.year + "</li>"
@@ -148,8 +148,10 @@ $('#searchMovie').click(function (e) {
                         html += "<h6 class=''><span>Actors:</span> " + omdbMovie.actors + "</h6>";
                         html += "<h6 class=''><span>Plot:</span> " + omdbMovie.plot + "</h6></div>";
                         html += "<h6 class='d-flex justify-content-center'><span>Is this the movie you searched for?</span></h6>";
-                        html += "<button class='d-flex row justify-content-center btn btn-outline-success mt-1 mb-5 my-sm-0' id='cancelSearchedMovie'>Cancel</button>";
-                        html += "<button class='d-flex row justify-content-center btn btn-outline-success my-2 my-sm-0' id='addSearchedMovie'>Add to Collection</button></div>";
+                        html += "<div class='row d-flex justify-content-center'>";
+                        html += "<button class=' btn btn-outline-success mr-1 mb-3 ' id='cancelSearchedMovie'>Cancel</button>";
+                        html += "<button class=' btn btn-outline-success ml-1 mb-3 ' id='addSearchedMovie'>Add to Collection</button></div>";
+                        html += "</div>";
                         $(".load-movies").append(html);
                         $("#cancelSearchedMovie").click(function(){
                             getDatabase(glitchUrl, get);
