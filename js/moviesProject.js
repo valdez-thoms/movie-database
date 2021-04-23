@@ -103,40 +103,79 @@ $("#sortTitleZtoA").click(function () {
 })
 /// search submit button
 // works but maybe use a modal to display the alert and confirmation
-// $('#searchSubmit').click(function (e) {
-//     e.preventDefault();
-//     let searchValue = searchEntry.value.toLowerCase();
-//     let movieCheck = false
-//     $('.card-title').each(function() {
-//         console.log($(this).text())
-//         if ($(this).text().toLowerCase().includes(searchValue)) {
-//             movieCheck = true
-//         }
-//     })
-//     console.log(movieCheck)
-//     if (movieCheck === false) {
-//         searchValue = searchValue.replace(' ', "+");
-//         fetch(movieURL + movieKey + searchValue, getMovie)
-//             .then(response => response.json()
-//                 .then(data => {
-//                     // if (confirm(`Is ${data.Title} with a plot of "${data.Plot}", the movie you were looking for?`)) {
-//                     //     if (confirm(`we havent added that movie yet!, would you like to add it now?`)) {
-//                             $("#add").modal('show')
-//                             $("#titleAdd").val(data.Title)
-//                             $("#ratingAdd").val(data.imdbRating)
-//                             $("#yearAdd").val(data.Year)
-//                             $("#genreAdd").val(data.Genre)
-//                             $("#directorAdd").val(data.Director)
-//                             $("#plotAdd").val(data.Plot)
-//                             $("#actorsAdd").val(data.Actors)
-//                             $("#posterAdd").val(data.Poster)
-//                     //     }
-//                     // }
-//                 }))
-//     }
-//
-//
-// })
+$('#searchMovie').click(function (e) {
+    e.preventDefault();
+    let searchValue = searchEntry.value.toLowerCase();
+    let movieCheck = false;
+    $('.card-title').each(function() {
+        console.log($(this).text())
+        if ($(this).text().toLowerCase().includes(searchValue)) {
+            movieCheck = true
+        }
+    })
+    console.log(movieCheck)
+    if (movieCheck === false) {
+        console.log
+        let token = omdbToken;
+        searchValue = searchValue.replace(' ', "+");
+        fetch(`http://www.omdbapi.com/?t=${searchValue}&apikey=${token}`)
+            .then(response => {
+                response.json()
+                    .then(omdbMovie => {
+                        let {Actors, Director, Genre, Plot, Year, Poster, Title, imdbRating} = omdbMovie;
+                        omdbMovie = {};
+                        omdbMovie = {
+                            title: Title,
+                            year: Year,
+                            rating: imdbRating,
+                            genre: Genre,
+                            director: Director,
+                            actors: Actors,
+                            plot: Plot,
+                            poster: Poster,
+                        }
+                        console.log(omdbMovie)
+                        let html = "";
+                        html += "<div id='#' class='card d-flex flex-wrap col-4 my-2'>";
+                        html += "<div class='card-body'>";
+                        html += "<h5 class='card-title '><span>" + omdbMovie.title + "</span></h5>";
+                        html += "<h6 class='card-subtitle m-0'><ul class='p-0 row'>";
+                        html += "<li class='list-unstyled col-6'><span>Year:</span> " + omdbMovie.year + "</li>"
+                        html += "<li class='list-unstyled col-6'><span>Rating:</span> " + omdbMovie.rating + "/10</li></h6>";
+                        html += "<a class='image' href='#'><img class='imgMovie mb-1 w-100 position-relative' src='" + omdbMovie.poster + "'></a>";
+                        html += "<h6 class='list-unstyled'><span>Genres:</span> " + omdbMovie.genre + "</h6>";
+                        html += "<h6 class=''><span>Director:</span> " + omdbMovie.director + "</h6>";
+                        html += "<h6 class=''><span>Actors:</span> " + omdbMovie.actors + "</h6>";
+                        html += "<h6 class=''><span>Plot:</span> " + omdbMovie.plot + "</h6></div>";
+                        html += "<h6 class='d-flex justify-content-center'><span>Is this the movie you searched for?</span></h6>";
+                        html += "<button class='d-flex row justify-content-center btn btn-outline-success mt-1 mb-5 my-sm-0' id='cancelSearchedMovie'>Cancel</button>";
+                        html += "<button class='d-flex row justify-content-center btn btn-outline-success my-2 my-sm-0' id='addSearchedMovie'>Add to Collection</button></div>";
+                        $(".load-movies").append(html);
+                        $("#cancelSearchedMovie").click(function(){
+                            getDatabase(glitchUrl, get);
+                        })
+                        $("#addSearchedMovie").click(function(){
+                            let post = {
+                                method: 'POST',
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify(omdbMovie)
+                            };
+                            // sending the new movie to DB
+                            fetch(glitchUrl, post)
+                                .then(response => {
+                                    getDatabase(glitchUrl, get)
+
+                                })
+                        })
+                    })
+            })
+
+    }
+
+
+})
 //// search entry function
 let searchEntry = document.querySelector('#searchBar')
 $('#searchBar').on('input', function (e) {
