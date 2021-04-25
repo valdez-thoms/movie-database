@@ -29,17 +29,35 @@ function displayMovies(movieList) {
         let html = "";
         // html = "<div class="genre"></div>"
         html += "<div id='" + movie.id + "' class='card d-flex flex-wrap col-4 my-2'>";
-        html += "<div class='card-body'>";
+
+        html += "<div class='card-body'>"; //card body front
+        html += "<h5 class='card-title '><span>" + movie.title + "</span></h5>";
+        // html += "<h6 class='card-subtitle m-0'><ul class='p-0 row'>";
+        // html += "<li class='list-unstyled col-6'><span>Year:</span> " + movie.year + "</li>"
+        // html += "<li class='list-unstyled col-6'><span>Rating:</span> " + movie.rating + "/10</li></h6>"
+        html += "<a class='image' href='#" + movie.id + "'><img class='imgMovie mb-1 w-100 position-relative' src='" + movie.poster + "'></a>";
+        // html += "<h6 class='hidden d-none list-unstyled'><span>Genres:</span> " + movie.genre + "</h6>"
+        // html += "<h6 class='hidden d-none'><span>Director:</span> " + movie.director + "</h6>";
+        // html += "<h6 class='hidden d-none'><span>Actors:</span> " + movie.actors + "</h6>"
+        // html += "<h6 class='hidden d-none'><span>Plot:</span> " + movie.plot + "</h6>";
+        html += "</div>";//card body front
+
+
+        // html += "<div id='" + movie.id + "' class='card card-side-back d-flex flex-wrap col-4 my-2'>";
+        html += "<div class='card-body '>"; //card body back
         html += "<h5 class='card-title '><span>" + movie.title + "</span></h5>";
         html += "<h6 class='card-subtitle m-0'><ul class='p-0 row'>";
         html += "<li class='list-unstyled col-6'><span>Year:</span> " + movie.year + "</li>"
         html += "<li class='list-unstyled col-6'><span>Rating:</span> " + movie.rating + "/10</li></h6>"
-        html += "<a class='image' href='#" + movie.id + "'><img class='imgMovie mb-1 w-100 position-relative' src='" + movie.poster + "'></a>";
-        html += "<h6 class='hidden d-none list-unstyled'><span>Genres:</span> " + movie.genre + "</h6>"
-        html += "<h6 class='hidden d-none'><span>Director:</span> " + movie.director + "</h6>";
-        html += "<h6 class='hidden d-none'><span>Actors:</span> " + movie.actors + "</h6>"
-        html += "<h6 class='hidden d-none'><span>Plot:</span> " + movie.plot + "</h6>";
-        html += "</div></div>";
+        // html += "<a class='image' href='#" + movie.id + "'><img class='imgMovie mb-1 w-100 position-relative' src='" + movie.poster + "'></a>";
+        html += "<h6 class='list-unstyled'><span>Genres:</span> " + movie.genre + "</h6>"
+        html += "<h6 class=''><span>Director:</span> " + movie.director + "</h6>";
+        html += "<h6 class=''><span>Actors:</span> " + movie.actors + "</h6>"
+        html += "<h6 class=''><span>Plot:</span> " + movie.plot + "</h6>";
+        html += "</div>"; // card body back
+
+        html += "</div>";// card
+
         $(".load-movies").append(html)
     }
     $("a").click(function () {
