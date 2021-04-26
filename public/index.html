@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rollie's Movie Barn</title>
     <!--  Bootstrap CDN CSS  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -10,7 +11,7 @@
 <body>
 <!--********************  NAVBAR  *****************************-->
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light p-0">
-    <a class="navbar-brand m-0 p-0" href="#"><img src="../img/rollies_logo.png"></a>
+    <a class="navbar-brand m-0 p-0" href="#"><img id="logo" src="../img/rollies_logo.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -122,8 +123,7 @@
                         <label for="poster">Movie Poster:</label>
                         <input class="editElement" id="poster" type="text">
                         <label for="plot">Plot:</label>
-                        <textarea rows="4" cols="45"class="editElement" id="plot" type="text"></textarea>
-
+                        <textarea rows="4" cols="45" class="editElement" id="plot" type="text"></textarea>
                     </form>
                 </div>
             </div>
@@ -136,11 +136,11 @@
 </div>
 
 <!--*********************  MOVIE DISPLAY AREA  ********************-->
-
+<main>
 <div class="load-movies row m-2">
     <div class="loader"></div>
 </div>
-
+</main>
 
 
 

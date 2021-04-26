@@ -27,24 +27,33 @@ function displayMovies(movieList) {
     for (movie of movieList) {
         genres.push(movie.genre);
         let html = "";
-        // html = "<div class="genre"></div>"
-        html += "<div id='" + movie.id + "' class='card d-flex flex-wrap col-4 my-2'>";
-        html += "<div class='card-body'>";
-        html += "<h5 class='card-title '><span>" + movie.title + "</span></h5>";
+        html += "<div id='" + movie.id + "' class='d-flex flex-wrap col-md-4 col-lg-3 w-100 p-0'>";
+
+        html += "<div class='card w-100 mx-3 my-2'>";
+        html += "<div class='card-body w-100 card__side card__side--front h-100'>"; //card body front
+        html += "<h6 class='card-title d-flex justify-content-center w-100'><span>" + movie.title + "</span></h6>";
+        html += "<a id='posterImage' class='d-flex justify-content-center' href='#" + movie.id + "'><img class='w-100 h-100' src='" + movie.poster + "'></a>";
+        html += "</div>";//card body front
+
+        html += "<div class='card-body d-flex flex-column justify-content-center card__side card__side--back h-100'>"; //card body back
+        html += "<h6 class='card-title mb-5 d-flex justify-content-center'><span>" + movie.title + "</span></h6>";
         html += "<h6 class='card-subtitle m-0'><ul class='p-0 row'>";
         html += "<li class='list-unstyled col-6'><span>Year:</span> " + movie.year + "</li>"
         html += "<li class='list-unstyled col-6'><span>Rating:</span> " + movie.rating + "/10</li></h6>"
-        html += "<a class='image' href='#" + movie.id + "'><img class='imgMovie mb-1 w-100 position-relative' src='" + movie.poster + "'></a>";
-        html += "<h6 class='hidden d-none list-unstyled'><span>Genres:</span> " + movie.genre + "</h6>"
-        html += "<h6 class='hidden d-none'><span>Director:</span> " + movie.director + "</h6>";
-        html += "<h6 class='hidden d-none'><span>Actors:</span> " + movie.actors + "</h6>"
-        html += "<h6 class='hidden d-none'><span>Plot:</span> " + movie.plot + "</h6>";
-        html += "</div></div>";
+        html += "<h6 class='list-unstyled'><span>Genres:</span> " + movie.genre + "</h6>"
+        html += "<h6 class=''><span>Director:</span> " + movie.director + "</h6>";
+        html += "<h6 class=''><span>Actors:</span> " + movie.actors + "</h6>"
+        html += "<h6 class=''><span>Plot:</span> " + movie.plot + "</h6>";
+        html += "</div>"; // card body back
+
+        html += "</div>";// card
+        html += "</div>";// column
+
         $(".load-movies").append(html)
     }
-    $("a").click(function () {
-        $(this).parent().children().filter('.hidden').toggleClass('d-none');
-    })
+    // $("a").click(function () {
+    //     $(this).parent().children().filter('.hidden').toggleClass('d-none');
+    // })
     generateSelectList(movieList);
 }
 
@@ -136,22 +145,26 @@ $('#searchMovie').click(function (e) {
                         }
                         console.log(omdbMovie)
                         let html = "";
-                        html += "<div id='#' class='card d-flex flex-wrap col-4 my-2'>";
+                        html += "<div class='d-flex align-items-center justify-content-center w-100'>";
+
+                        html += "<div class='card my-2 search'>";
+
                         html += "<div class='card-body'>";
-                        html += "<h5 class='card-title '><span>" + omdbMovie.title + "</span></h5>";
+                        html += "<h5 class='card-title d-flex justify-content-center'><span>" + omdbMovie.title + "</span></h5>";
                         html += "<h6 class='card-subtitle m-0'><ul class='p-0 row'>";
                         html += "<li class='list-unstyled col-6'><span>Year:</span> " + omdbMovie.year + "</li>"
-                        html += "<li class='list-unstyled col-6'><span>Rating:</span> " + omdbMovie.rating + "/10</li></h6>";
-                        html += "<a class='image' href='#'><img class='imgMovie mb-1 w-100 position-relative' src='" + omdbMovie.poster + "'></a>";
+                        html += "<li class='list-unstyled col-6 d-flex justify-content-end'><span>Rating:</span> " + omdbMovie.rating + "/10</li></h6>";
+                        html += "<a class='d-flex justify-content-center mb-2' href='#'><img class='mb-1 w-100 position-relative' src='" + omdbMovie.poster + "'></a>";
                         html += "<h6 class='list-unstyled'><span>Genres:</span> " + omdbMovie.genre + "</h6>";
                         html += "<h6 class=''><span>Director:</span> " + omdbMovie.director + "</h6>";
                         html += "<h6 class=''><span>Actors:</span> " + omdbMovie.actors + "</h6>";
-                        html += "<h6 class=''><span>Plot:</span> " + omdbMovie.plot + "</h6></div>";
-                        html += "<h6 class='d-flex justify-content-center'><span>Is this the movie you searched for?</span></h6>";
+                        html += "<h6 class=''><span>Plot:</span> " + omdbMovie.plot + "</h6>";
+                        html += "<h6 class='d-flex justify-content-center mt-4'><span>Is this the movie you searched for?</span></h6>";
                         html += "<div class='row d-flex justify-content-center'>";
                         html += "<button class=' btn btn-outline-success mr-1 mb-3 ' id='cancelSearchedMovie'>Cancel</button>";
-                        html += "<button class=' btn btn-outline-success ml-1 mb-3 ' id='addSearchedMovie'>Add to Collection</button></div>";
-                        html += "</div>";
+                        html += "<button class=' btn btn-outline-success ml-1 mb-3 ' id='addSearchedMovie'>Add to Collection</button>";
+                        html += "</div></div></div></div>";
+
                         $(".load-movies").append(html);
                         $("#cancelSearchedMovie").click(function(){
                             getDatabase(glitchUrl, get);
@@ -222,7 +235,7 @@ $("#filterGenre").click(function () {
                     }
                     $(".load-movies").html("")
                     for (genre of genreArray) {
-                        $(".load-movies").append(`<div id='${genre.title}' class="col-12 d-flex flex-wrap"><h1>${genre.title}</h1>`)
+                        $(".load-movies").append(`<div style="color:white" id='${genre.title}' class="col-12 d-flex flex-wrap"><h1>${genre.title}</h1>`)
                         displayMovies(genre.movies)
                         $(".load-movies").append('</div>')
                     }
