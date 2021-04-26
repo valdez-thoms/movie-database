@@ -20,7 +20,7 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-#poster {
+#posterImage {
     width: 100%;
     height: 90%;
 }

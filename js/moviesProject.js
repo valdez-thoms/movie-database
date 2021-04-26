@@ -32,7 +32,7 @@ function displayMovies(movieList) {
         html += "<div class='card w-100 mx-3 my-2'>";
         html += "<div class='card-body w-100 card__side card__side--front h-100'>"; //card body front
         html += "<h6 class='card-title d-flex justify-content-center w-100'><span>" + movie.title + "</span></h6>";
-        html += "<a id='poster' class='d-flex justify-content-center' href='#" + movie.id + "'><img class='w-100 h-100' src='" + movie.poster + "'></a>";
+        html += "<a id='posterImage' class='d-flex justify-content-center' href='#" + movie.id + "'><img class='w-100 h-100' src='" + movie.poster + "'></a>";
         html += "</div>";//card body front
 
         html += "<div class='card-body d-flex flex-column justify-content-center card__side card__side--back h-100'>"; //card body back
