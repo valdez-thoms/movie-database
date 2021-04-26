@@ -27,15 +27,15 @@ function displayMovies(movieList) {
     for (movie of movieList) {
         genres.push(movie.genre);
         let html = "";
-        html += "<div id='" + movie.id + "' class='d-flex flex-wrap col-sm-6 col-lg-4 col-xl-3 p-0'>";
-        html += "<div class='card mx-3 my-2'>";
+        html += "<div id='" + movie.id + "' class='d-flex flex-wrap col-4 p-0'>";
 
-        html += "<div class='card-body card__side card__side--front'>"; //card body front
+        html += "<div class='card mx-3 my-2'>";
+        html += "<div class='card-body card__side card__side--front h-100'>"; //card body front
         html += "<h5 class='card-title d-flex justify-content-center'><span>" + movie.title + "</span></h5>";
         html += "<a class='image d-flex justify-content-center' href='#" + movie.id + "'><img class='imgMovie mb-1' src='" + movie.poster + "'></a>";
         html += "</div>";//card body front
 
-        html += "<div class='card-body card-side card__side--back'>"; //card body back
+        html += "<div class='card-body card_side card__side--back'>"; //card body back
         html += "<h5 class='card-title d-flex justify-content-center'><span>" + movie.title + "</span></h5>";
         html += "<h6 class='card-subtitle m-0'><ul class='p-0 row'>";
         html += "<li class='list-unstyled col-6'><span>Year:</span> " + movie.year + "</li>"
