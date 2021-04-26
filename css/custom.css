@@ -20,11 +20,10 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-.imgMovie {
-    width: fit-content;
-    height: fit-content;
+a {
+    width: 100%;
+    height: 90%;
 }
-
 span {
     font-weight: bolder;
 }
@@ -37,23 +36,17 @@ span {
 /*********   flipping cards   **********/
 
 .card {
-    /*-webkit-perspective: 150rem;*/
-    /*perspective: 150rem;*/
-    /*-moz-perspective: 150rem;*/
-    /*position: relative;*/
     height: 35rem;
-    /*background-color: white;*/
+    background-color: rgba(0,0,0,0);
+    border:none;
 }
 
 .card__side {
-    /*height: 52rem;*/
     -webkit-transition: all 0.8s ease;
-    transition: all 0.8s ease;
+    transition: all 1.8s ease;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    /*height: auto;*/
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 3px;
@@ -61,7 +54,9 @@ span {
     -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
 }
-
+card__side--front {
+    /*width: 20rem;*/
+}
 .card__side--back {
     background-color: white;
     color: black;
