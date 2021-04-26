@@ -32,11 +32,11 @@ function displayMovies(movieList) {
         html += "<div class='card w-100 mx-3 my-2'>";
         html += "<div class='card-body w-100 card__side card__side--front h-100'>"; //card body front
         html += "<h6 class='card-title d-flex justify-content-center w-100'><span>" + movie.title + "</span></h6>";
-        html += "<a class='d-flex justify-content-center' href='#" + movie.id + "'><img class='w-100 h-100' src='" + movie.poster + "'></a>";
+        html += "<a id='poster' class='d-flex justify-content-center' href='#" + movie.id + "'><img class='w-100 h-100' src='" + movie.poster + "'></a>";
         html += "</div>";//card body front
 
-        html += "<div class='card-body card__side card__side--back h-100'>"; //card body back
-        html += "<h6 class='card-title d-flex justify-content-center'><span>" + movie.title + "</span></h6>";
+        html += "<div class='card-body d-flex flex-column justify-content-center card__side card__side--back h-100'>"; //card body back
+        html += "<h6 class='card-title mb-5 d-flex justify-content-center'><span>" + movie.title + "</span></h6>";
         html += "<h6 class='card-subtitle m-0'><ul class='p-0 row'>";
         html += "<li class='list-unstyled col-6'><span>Year:</span> " + movie.year + "</li>"
         html += "<li class='list-unstyled col-6'><span>Rating:</span> " + movie.rating + "/10</li></h6>"
@@ -51,9 +51,9 @@ function displayMovies(movieList) {
 
         $(".load-movies").append(html)
     }
-    $("a").click(function () {
-        $(this).parent().children().filter('.hidden').toggleClass('d-none');
-    })
+    // $("a").click(function () {
+    //     $(this).parent().children().filter('.hidden').toggleClass('d-none');
+    // })
     generateSelectList(movieList);
 }
 
@@ -145,24 +145,26 @@ $('#searchMovie').click(function (e) {
                         }
                         console.log(omdbMovie)
                         let html = "";
-                        html += "<div class='d-flex flex-wrap col-sm-6 col-lg-4 col-xl-3 p-0'>";
-                        html += "<div class='card h-100 mx-3 my-2'>";
+                        html += "<div class='d-flex align-items-center justify-content-center w-100'>";
+
+                        html += "<div class='card my-2 search'>";
 
                         html += "<div class='card-body'>";
-                        html += "<h5 class='card-title '><span>" + omdbMovie.title + "</span></h5>";
+                        html += "<h5 class='card-title d-flex justify-content-center'><span>" + omdbMovie.title + "</span></h5>";
                         html += "<h6 class='card-subtitle m-0'><ul class='p-0 row'>";
                         html += "<li class='list-unstyled col-6'><span>Year:</span> " + omdbMovie.year + "</li>"
-                        html += "<li class='list-unstyled col-6'><span>Rating:</span> " + omdbMovie.rating + "/10</li></h6>";
-                        html += "<a class='image' href='#'><img class='imgMovie mb-1 w-100 position-relative' src='" + omdbMovie.poster + "'></a>";
+                        html += "<li class='list-unstyled col-6 d-flex justify-content-end'><span>Rating:</span> " + omdbMovie.rating + "/10</li></h6>";
+                        html += "<a class='d-flex justify-content-center mb-2' href='#'><img class='mb-1 w-100 position-relative' src='" + omdbMovie.poster + "'></a>";
                         html += "<h6 class='list-unstyled'><span>Genres:</span> " + omdbMovie.genre + "</h6>";
                         html += "<h6 class=''><span>Director:</span> " + omdbMovie.director + "</h6>";
                         html += "<h6 class=''><span>Actors:</span> " + omdbMovie.actors + "</h6>";
-                        html += "<h6 class=''><span>Plot:</span> " + omdbMovie.plot + "</h6></div>";
-                        html += "<h6 class='d-flex justify-content-center'><span>Is this the movie you searched for?</span></h6>";
+                        html += "<h6 class=''><span>Plot:</span> " + omdbMovie.plot + "</h6>";
+                        html += "<h6 class='d-flex justify-content-center mt-4'><span>Is this the movie you searched for?</span></h6>";
                         html += "<div class='row d-flex justify-content-center'>";
                         html += "<button class=' btn btn-outline-success mr-1 mb-3 ' id='cancelSearchedMovie'>Cancel</button>";
-                        html += "<button class=' btn btn-outline-success ml-1 mb-3 ' id='addSearchedMovie'>Add to Collection</button></div>";
-                        html += "</div></div></div>";
+                        html += "<button class=' btn btn-outline-success ml-1 mb-3 ' id='addSearchedMovie'>Add to Collection</button>";
+                        html += "</div></div></div></div>";
+
                         $(".load-movies").append(html);
                         $("#cancelSearchedMovie").click(function(){
                             getDatabase(glitchUrl, get);
