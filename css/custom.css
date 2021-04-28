@@ -10,19 +10,19 @@ body {
     display: flex;
     flex-flow: row wrap;
 }
-/*.loader {*/
-/*    border: 16px solid #f3f3f3; !* Light grey *!*/
-/*    border-top: 16px solid #3498db; !* Blue *!*/
-/*    border-radius: 50%;*/
-/*    width: 120px;*/
-/*    height: 120px;*/
-/*    animation: spin 2s linear infinite;*/
-/*}*/
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
 
-/*@keyframes spin {*/
-/*    0% { transform: rotate(0deg); }*/
-/*    100% { transform: rotate(360deg); }*/
-/*}*/
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
 .imgMovie {
     min-width: 100px;
@@ -54,4 +54,46 @@ img {
 
 .movie{
     flex: 0 0 auto;
+}
+
+#confirm-delete-modal{
+    z-index: 1100 !important;
+}
+
+ #trailerModal .model-content {
+    z-index: 1100 !important;
+}
+
+#movieModal .modal {
+
+}
+iframe {
+    min-height: 200px;
+    min-width: 300px;
+    width: 100%;
+    height: 100%;
+    position: relative !important;
+}
+
+#searchBar {
+    width: 300px;
+
+}
+
+/* Medium ViewPort and Up */
+
+.dropdown-menu.show{
+    text-align: right;
+    /*flex-flow: row nowrap*/
+}
+
+.dropdown-menu.show a{
+    width: 100%;
+    /*flex-flow: row nowrap*/
+}
+.dropdown-menu.show a label{
+    margin-right: 1em;
+}
+.dropdown-menu.show a input{
+    text-align: right;
 }
