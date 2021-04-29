@@ -2,7 +2,6 @@ body {
     background: rgb(2,0,36);
     background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
-
 .dropdown-menu {
     left: -80%;
 }
@@ -14,7 +13,6 @@ body {
     height: 120px;
     animation: spin 2s linear infinite;
 }
-
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -27,6 +25,15 @@ body {
 span {
     font-weight: bolder;
 }
+
+#logo {
+    width: 150px;
+}
+.search {
+    width: 33%;
+}
+/*********   flipping cards   **********/
+=======
 
 #logo {
     width: 150px;
@@ -77,6 +84,4 @@ span {
     background-color: white;
     color: black;
 }
-
-
 

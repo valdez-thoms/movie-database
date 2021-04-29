@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rollie's Movie Barn</title>
+    <!--  Bootstrap CDN CSS  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body>
+<!--   NAVBAR   -->
+<!--  SMALLER LOGO AND ONLY TOGGLER ON MOBILE -->
+<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="../img/rollies_logo.png" alt="rollie's movie barn logo"/>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="justify-content-between collapse navbar-collapse" id="navbarSupportedContent">
+        <!--  SEARCH & SUBMIT ON SAME LINE -->
+        <form class="form-inline d-flex flex-nowrap justify-content-between">
+            <input id="searchBar" class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button id="searchSubmit" class="ml-3 btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <!--   DROPDOWN DISPLAYS TWO ROWS OF DATA INSTEAD OF ONE COLUMN     -->
+
+        <div class="d-md-flex justify-content-end ">
+                <div class="d-flex float-right justify-content-end addMovie-holder">
+                <button type="button" class=" btn btn-primary m-md-2 my-2" data-toggle="modal" data-target="#add">
+                    Add Movie
+                </button>
+            </div>
+            <div class="d-flex d-md-block justify-content-start">
+                <ul class="navbar-nav  dropdown">
+                    <li class=" nav-item my-2">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-offset="2"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Sort by
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">
+                                <label for="sortA-Z">A-Z</label>
+                                <input name="sort" id="sortA-Z" type="radio"/>
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <label for="sortZ-A">Z-A</label>
+                                <input name="sort" id="sortZ-A" type="radio"/>
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <label for="sort10-1">Rating Hi-Lo</label>
+                                <input name="sort" id="sort10-1" type="radio"/>
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <label for="sort1-10">Rating Lo-Hi</label>
+                                <input name="sort" id="sort1-10" type="radio"/>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            </div>
+
+        </div>
+    </div>
+</nav>
+<!--*********************  MODAL FOR ADD MOVIES  ********************-->
+<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalCenterTitle">Add Your Movie</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+            <div id="addModal-body" class="modal-body mx-2">
+                <form id="formAdd" class="d-flex flex-column">
+                    <label for="titleAdd">Title:</label>
+                    <input required="required" aria-required="true" id="titleAdd" type="text">
+                    <label for="ratingAdd">Rating:</label>
+                    <input required="required" id="ratingAdd" type="text">
+                    <label for="yearAdd">Year:</label>
+                    <input required="required" id="yearAdd" type="text">
+                    <label for="genreAdd">Genre:</label>
+                    <input required="required" id="genreAdd" type="text">
+                    <label for="directorAdd">Director:</label>
+                    <input required="required" id="directorAdd" type="text">
+                    <label for="actorsAdd">Actors:</label>
+                    <input class="w-100" required="required" id="actorsAdd" type="text">
+                    <label for="posterAdd">Movie Poster:</label>
+                    <input required="required" id="posterAdd" type="text">
+                    <label for="plotAdd">Plot:</label>
+                    <textarea rows="4" cols="45" class="w-100" required="required" id="plotAdd"></textarea>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input id="saveNewMovie" type="submit" class="btn btn-primary" value="submit">
+                        <input id="editedMovie" type="submit" class="btn btn-primary d-none" value="submit">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--  CONFIRM DELETE MODAL POINT OF NO RETURN  -->
+<div class="confirmationModal"></div>
+
+<!--  TRAILER MODAL  -->
+<div class="trailerModal"></div>
+
+<!--  MAIN DISPLAY AREA FOR GENRE CARDS  -->
+<div class="container">
+    <main class="genre-card-holder">
+        <!-- GENRE CARDS GENERATED & HELD IN THIS DIV -->
+        <div class="genre-card-generator load-movies m-2"><div class="loader"></div></div>
+    </main>
+    <!-- MOVIE MODAL HOLDS ALL MOVIE INFORMATION -->
+    <div>
+        <div class="modal fade" id="movieModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title title" id="movieModalTitle">${movie.title}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body row no-gutters">
+                        <div class="video col-md-12 col-lg-6 float-left "></div>
+                        <div class="movie-details col-12 col-md-12 col-lg-6">
+                            <ul class=" d-flex  justify-content-between list-unstyled p-0 mx-0 my-2">
+                                <li class="p-1 year">Year: ${movie.year}</li>
+                                <li class="p-1 rating">Rating: ${movie.rating}</li>
+                            </ul>
+                            <p class="p-1 genre my-2 ">${movie.genre}</p>
+
+    <p class="p-1 m-1 plot">${movie.plot}</p>
+                            <ul class="list-unstyled row col-lg-12 d-lg-block p-1 m-0">
+                                    <li class="actors align-self-start m-0 ">Actors: ${movie.actors}</li>
+                                    <li class="director m-0 align-self-start ">Director: ${movie.director}</li>
+                                </ul>
+                            </div>
+
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="editMovie btn btn-warning">Edit Movie</button>
+                        <button type="button" class="delete btn btn-danger">Delete Movie</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--  Jquery CDN  -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<!-- bootstrap CSS js and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!--  Custom CSS  -->
+<script src="../js/keys.js"></script>
+<script src="../js/moviesProject2.js"></script>
+
+</body>
+</html>
