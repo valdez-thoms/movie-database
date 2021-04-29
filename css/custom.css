@@ -1,14 +1,9 @@
 body {
-    background-color: #abcee5;
+    background: rgb(2,0,36);
+    background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
-
 .dropdown-menu {
     left: -80%;
-}
-
-.dropdown-menu.show{
-    display: flex;
-    flex-flow: row wrap;
 }
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
@@ -18,82 +13,58 @@ body {
     height: 120px;
     animation: spin 2s linear infinite;
 }
-
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
-.imgMovie {
-    min-width: 100px;
-    min-height: 150px;
+#posterImage {
     width: 100%;
-    height: 100%;
+    height: 90%;
 }
-.movie-card {
-    min-width:100px;
-    background-color: transparent;
-    border: none;
-}
-
 span {
     font-weight: bolder;
 }
-
-img {
-    max-width: 100px;
+#logo {
+    width: 150px;
 }
-
-.scrolling-wrapper {
-    overflow-x: auto;
+.search {
+    width: 33%;
 }
-
-::-webkit-scrollbar {
-    display: none;
+/*********   flipping cards   **********/
+.card {
+    height: 35rem;
+    background-color: rgba(0,0,0,0);
+    border:none;
 }
-
-.movie{
-    flex: 0 0 auto;
+.card__side {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    overflow: hidden;
+    -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
 }
-
-#confirm-delete-modal{
-    z-index: 1100 !important;
+.card__side--back {
+    background-color: white;
+    color: black;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
 }
-
- #trailerModal .model-content {
-    z-index: 1100 !important;
+.card:hover .card__side--back {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
 }
-
-#movieModal .modal {
-
+.card:hover .card__side--front {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
 }
-iframe {
-    min-height: 200px;
-    min-width: 300px;
-    width: 100%;
-    height: 100%;
-    position: relative !important;
-}
-
-#searchBar {
-    width: 300px;
-
-}
-
-/* Medium ViewPort and Up */
-
-.dropdown-menu.show{
-    text-align: right;
-    /*flex-flow: row nowrap*/
-}
-
-.dropdown-menu.show a{
-    width: 100%;
-    /*flex-flow: row nowrap*/
-}
-.dropdown-menu.show a label{
-    margin-right: 1em;
-}
-.dropdown-menu.show a input{
-    text-align: right;
+.card-body{
+    background-color: white;
+    color: black;
 }
