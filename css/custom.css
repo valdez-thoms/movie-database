@@ -17,6 +17,7 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
 #posterImage {
     width: 100%;
     height: 90%;
@@ -24,6 +25,7 @@ body {
 span {
     font-weight: bolder;
 }
+
 #logo {
     width: 150px;
 }
@@ -31,11 +33,24 @@ span {
     width: 33%;
 }
 /*********   flipping cards   **********/
+=======
+
+#logo {
+    width: 150px;
+
+}
+.search {
+    width: 33%;
+
+}
+/*********   flipping cards   **********/
+
 .card {
     height: 35rem;
     background-color: rgba(0,0,0,0);
     border:none;
 }
+
 .card__side {
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
@@ -49,6 +64,7 @@ span {
     -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
 }
+
 .card__side--back {
     background-color: white;
     color: black;
@@ -68,3 +84,4 @@ span {
     background-color: white;
     color: black;
 }
+
